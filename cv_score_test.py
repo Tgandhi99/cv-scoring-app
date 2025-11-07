@@ -1,11 +1,10 @@
-
 import streamlit as st
 import docx2txt
 from PyPDF2 import PdfReader
 
 st.set_page_config(page_title="CV Scoring Tool", page_icon="📄", layout="centered")
 
-st.title("📄 CV Scoring Tool - General Qualification (Test Version)")
+st.title("📄 CV Scoring Tool - General Qualification (Interactive Version)")
 
 st.markdown("""
 This tool evaluates **General Qualification (15%)** based on World Bank-style criteria  
@@ -26,13 +25,13 @@ SCORING_RULES = {
     
 }
 
-FULL_MARKS = 17.25  # total marks for General Qualification (15% weightage)
+FULL_MARKS = 17.25  # total marks for General Qualification
 
 # --- Upload section ---
 uploaded_file = st.file_uploader("📤 Upload the candidate's CV (PDF or DOCX):", type=["pdf", "docx"])
 
 if uploaded_file:
-    # Extract text based on file type
+    # Extract text from file
     if uploaded_file.name.endswith(".pdf"):
         reader = PdfReader(uploaded_file)
         text = "\n".join(page.extract_text() for page in reader.pages if page.extract_text())
@@ -45,16 +44,35 @@ if uploaded_file:
     matched_levels = [key for key in SCORING_RULES.keys() if key in text_lower]
 
     if matched_levels:
-        # choose the highest rating (best qualification found)
+        # pick best qualification found
         best_match = max(matched_levels, key=lambda k: SCORING_RULES[k])
-        rating = SCORING_RULES[best_match]
-        score = round(FULL_MARKS * rating, 2)
-
+        auto_rating = SCORING_RULES[best_match]
         st.success(f"🎓 Detected qualification: **{best_match.title()}**")
+
+        # --- Manual adjustment ---
+        st.markdown("### Adjust Rating (Evaluator Control)")
+        adjusted_rating = st.slider(
+            "Select final rating percentage based on overall qualification impression:",
+            min_value=0,
+            max_value=100,
+            value=int(auto_rating * 100),
+            step=1
+        ) / 100
+
+        # Compute final score
+        score = round(FULL_MARKS * adjusted_rating, 2)
         st.metric("General Qualification Score", f"{score} / {FULL_MARKS}")
-        st.progress(rating)
+        st.progress(adjusted_rating)
+
     else:
         st.warning("No relevant qualification keywords found in the CV. Please verify manually.")
+        adjusted_rating = st.slider(
+            "Manually set a rating percentage if qualification was not detected:",
+            min_value=0, max_value=100, value=0, step=1
+        ) / 100
+        score = round(FULL_MARKS * adjusted_rating, 2)
+        st.metric("General Qualification Score", f"{score} / {FULL_MARKS}")
+        st.progress(adjusted_rating)
 
     with st.expander("🔍 View extracted text"):
         st.text_area("CV Content Preview", text, height=300)
