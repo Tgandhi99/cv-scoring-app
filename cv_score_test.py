@@ -180,8 +180,7 @@ st.metric(label="Overseas / Country Experience Score", value=f"{overseas_score:.
 # FINAL TOTAL SCORE
 # ----------------------------
 total_final_score = total_general_score + total_section2_score + total_overseas_score
-
 st.markdown("---")
-st.markdown(f"## 🏁 **Final Total Score: {total_final_score:.2f} / 100 marks**")
+st.markdown(f"## 🏁 **Final Total Score: {total_final_score:.2f} / 115 marks**")
 
 
