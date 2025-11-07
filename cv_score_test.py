@@ -79,3 +79,45 @@ if uploaded_file:
 
 else:
     st.info("👆 Upload a PDF or DOCX resume to begin scoring.")
+    
+    # -------------------------
+# Section 3: Overseas / Country Experience
+# -------------------------
+st.header("Section 3: Overseas / Country Experience")
+st.write("**Weightage: 15% (17.25 marks)**")
+st.write("Criteria: Familiarity & Experience in other countries")
+
+# Input: Overseas Experience
+overseas_experience = st.selectbox(
+    "Select candidate's level of international experience:",
+    [
+        "Has international work experience (any country other than India)",
+        "Worked on international projects remotely",
+        "Has exposure through studies/internship abroad",
+        "Worked only in India but aware of global standards",
+        "Only domestic Indian experience (no global exposure)"
+    ]
+)
+
+# Rating logic
+if overseas_experience == "Has international work experience (any country other than India)":
+    rating_overseas = 100
+elif overseas_experience == "Worked on international projects remotely":
+    rating_overseas = 95
+elif overseas_experience == "Has exposure through studies/internship abroad":
+    rating_overseas = 90
+elif overseas_experience == "Worked only in India but aware of global standards":
+    rating_overseas = 80
+else:
+    rating_overseas = 60
+
+overseas_score = 17.25 * (rating_overseas / 100)
+st.metric(label="Overseas / Country Experience Score", value=f"{overseas_score:.2f} / 17.25")
+
+
+# -------------------------
+# Combined total so far
+# -------------------------
+total_score = general_score + overseas_score
+st.subheader("Total Score (so far)")
+st.metric(label="Total", value=f"{total_score:.2f} / 34.50")
