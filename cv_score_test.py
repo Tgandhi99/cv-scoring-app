@@ -23,7 +23,7 @@ SCORING_RULES = {
     "b.tech": 0.90,
     "b.e": 0.90,
     "diploma": 0.70,
-    "civil": 1.00,  # to ensure Civil is detected as relevant
+    
 }
 
 FULL_MARKS = 17.25  # total marks for General Qualification (15% weightage)
