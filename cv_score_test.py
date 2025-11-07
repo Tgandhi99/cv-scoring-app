@@ -118,6 +118,6 @@ st.metric(label="Overseas / Country Experience Score", value=f"{overseas_score:.
 # -------------------------
 # Combined total so far
 # -------------------------
-total_score = general_score + overseas_score
+total_score = score + overseas_score
 st.subheader("Total Score (so far)")
 st.metric(label="Total", value=f"{total_score:.2f} / 34.50")
