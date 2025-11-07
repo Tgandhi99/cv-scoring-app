@@ -7,7 +7,7 @@ st.set_page_config(page_title="CV Scoring Tool", page_icon="📄", layout="cente
 st.title("📄 CV Scoring Tool - General Qualification (Interactive Version)")
 
 st.markdown("""
-This tool evaluates **General Qualification (15%)** based on World Bank-style criteria  
+This tool evaluates all qualification based on World Bank-style criteria  
 for a **Contract Management Specialist / Team Leader** role.
 """)
 
@@ -15,7 +15,7 @@ for a **Contract Management Specialist / Team Leader** role.
 SCORING_RULES = {
     "phd": 1.00,
     "doctor": 1.00,
-    "master": 0.95,
+    "graduate": 1.00,
     "m.tech": 0.95,
     "m.e": 0.95,
     "bachelor": 0.90,
@@ -179,7 +179,7 @@ st.metric(label="Overseas / Country Experience Score", value=f"{overseas_score:.
 # ----------------------------
 # FINAL TOTAL SCORE
 # ----------------------------
-total_final_score = total_general_score + total_section2_score + total_overseas_score
+total_final_score = score + total_section2_score + overseas_score
 st.markdown("---")
 st.markdown(f"## 🏁 **Final Total Score: {total_final_score:.2f} / 115 marks**")
 
