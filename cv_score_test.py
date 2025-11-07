@@ -104,38 +104,38 @@ with st.expander("🔹 Expand to rate Project-Related Experience (6 sub-parts)")
 
     # Part 1
     rating1 = st.selectbox("**Part 1 – Total Professional Experience (≥20 years preferred)**", list(rating_options.keys()), key="exp1")
-    score1 = rating_to_score(rating_options[rating1], 13.5)
-    st.write(f"Score: {score1:.2f} / 13.5")
+    score1 = rating_to_score(rating_options[rating1], 13.4)
+    st.write(f"Score: {score1:.2f} / 13.4")
     total_section2_score += score1
 
     # Part 2
     rating2 = st.selectbox("**Part 2 – Experience in quality label certification (LEED, GRIHA)**", list(rating_options.keys()), key="exp2")
-    score2 = rating_to_score(rating_options[rating2], 13.5)
-    st.write(f"Score: {score2:.2f} / 13.5")
+    score2 = rating_to_score(rating_options[rating2], 13.4)
+    st.write(f"Score: {score2:.2f} / 13.4")
     total_section2_score += score2
 
     # Part 3
     rating3 = st.selectbox("**Part 3 – Experience in project planning, resource calculations, delay analysis, correspondence management, FIDIC**", list(rating_options.keys()), key="exp3")
-    score3 = rating_to_score(rating_options[rating3], 13.5)
-    st.write(f"Score: {score3:.2f} / 13.5")
+    score3 = rating_to_score(rating_options[rating3], 13.4)
+    st.write(f"Score: {score3:.2f} / 13.4")
     total_section2_score += score3
 
     # Part 4
     rating4 = st.selectbox("**Part 4 – Experience as Team Leader / Deputy Team Leader (consulting, high-value infra projects)**", list(rating_options.keys()), key="exp4")
-    score4 = rating_to_score(rating_options[rating4], 13.5)
-    st.write(f"Score: {score4:.2f} / 13.5")
+    score4 = rating_to_score(rating_options[rating4], 13.4)
+    st.write(f"Score: {score4:.2f} / 13.4")
     total_section2_score += score4
 
     # Part 5
     rating5 = st.selectbox("**Part 5 – Experience handling hospital or hotel contracts**", list(rating_options.keys()), key="exp5")
-    score5 = rating_to_score(rating_options[rating5], 13.5)
-    st.write(f"Score: {score5:.2f} / 13.5")
+    score5 = rating_to_score(rating_options[rating5], 13.4)
+    st.write(f"Score: {score5:.2f} / 13.4")
     total_section2_score += score5
 
     # Part 6
     rating6 = st.selectbox("**Part 6 – Understanding of legal issues in contracts**", list(rating_options.keys()), key="exp6")
-    score6 = rating_to_score(rating_options[rating6], 13.5)
-    st.write(f"Score: {score6:.2f} / 13.5")
+    score6 = rating_to_score(rating_options[rating6], 13.4)
+    st.write(f"Score: {score6:.2f} / 13.413")
     total_section2_score += score6
 
     st.markdown("---")
